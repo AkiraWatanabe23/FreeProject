@@ -7,15 +7,17 @@ public class PlayerAttack
     [SerializeField]
     private int _attackValue = 1;
     [SerializeField]
-    private Transform _raycastPos = default;
+    private Transform _muzzle = default;
 
     private Transform _transform = default;
+    private PlayerAnimation _animation = default;
 
     public int AttackValue => _attackValue;
 
-    public void Init(Transform transform)
+    public void Init(Transform transform, PlayerAnimation animation)
     {
         _transform = transform;
+        _animation = animation;
     }
 
     public void Update()
@@ -41,8 +43,9 @@ public class PlayerAttack
     private void LongDistance()
     {
         //エフェクト出すとかはここに書く
+        _animation.ChangeAnimToAttackLongDistance();
 
-        if (Physics.Raycast(_raycastPos.position, _transform.forward, out RaycastHit hit, 10f))
+        if (Physics.Raycast(_muzzle.position, _transform.forward, out RaycastHit hit, 10f))
         {
             if (hit.collider.gameObject.TryGetComponent(out EnemyController enemy))
             {
@@ -54,6 +57,7 @@ public class PlayerAttack
     /// <summary> 近接攻撃 </summary>
     private void Proximity()
     {
-
+        //ダメージ処理は武器のクラスに一任
+        _animation.ChangeAnimToAttackProximity();
     }
 }

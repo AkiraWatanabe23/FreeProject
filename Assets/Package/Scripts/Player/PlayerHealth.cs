@@ -8,18 +8,22 @@ public class PlayerHealth : IDamage
     private int _hp = 1;
 
     private GameObject _player = default;
+    private PlayerAnimation _animation = default;
 
-    public void Init(GameObject player)
+    public void Init(GameObject player, PlayerAnimation animation)
     {
         _player = player;
+        _animation = animation;
     }
 
     public void ReceiceDamage(int value)
     {
         _hp -= value;
+        _animation.ChangeAnimToDamage();
+
         if (_hp <= 0f)
         {
-            //Animation再生とか？
+            _animation.ChangeAnimToDeath();
             _player.SetActive(false);
         }
     }

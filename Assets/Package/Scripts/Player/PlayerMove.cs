@@ -10,10 +10,12 @@ public class PlayerMove
     private float _rotateSpeed = 1f;
 
     private Rigidbody _rb = default;
+    private PlayerAnimation _animation = default;
 
-    public void Init(Rigidbody rigidbody)
+    public void Init(Rigidbody rigidbody, PlayerAnimation animation)
     {
         _rb = rigidbody;
+        _animation = animation;
     }
 
     public void Update()
@@ -32,6 +34,12 @@ public class PlayerMove
 
             input.y = _rb.velocity.y;
             _rb.velocity = input * _moveSpeed;
+
+            _animation.ChangeAnimToMove();
+        }
+        else
+        {
+            _animation.ChangeAnimToIdle();
         }
     }
 }

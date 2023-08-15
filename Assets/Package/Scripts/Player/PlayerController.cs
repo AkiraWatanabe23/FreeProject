@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public PlayerMove Movement => _movement;
     public PlayerAttack Attack => _attack;
     public PlayerHealth Health => _health;
-    public PlayerAnimation Animation => _animation;
     public Rigidbody Rigidbody => _rb;
 
     private void Start()
@@ -26,9 +25,9 @@ public class PlayerController : MonoBehaviour
         TryGetComponent(out _rb);
         TryGetComponent(out _anim);
 
-        _movement.Init(_rb);
-        _attack.Init(transform);
-        _health.Init(gameObject);
+        _movement.Init(_rb, _animation);
+        _attack.Init(transform, _animation);
+        _health.Init(gameObject, _animation);
         _animation.Init(_anim);
     }
 

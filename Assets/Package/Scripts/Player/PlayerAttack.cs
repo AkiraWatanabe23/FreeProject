@@ -11,6 +11,8 @@ public class PlayerAttack
 
     private Transform _transform = default;
 
+    public int AttackValue => _attackValue;
+
     public void Init(Transform transform)
     {
         _transform = transform;
@@ -35,6 +37,7 @@ public class PlayerAttack
         }
     }
 
+    /// <summary> 遠距離攻撃 </summary>
     private void LongDistance()
     {
         //エフェクト出すとかはここに書く
@@ -48,6 +51,7 @@ public class PlayerAttack
         }
     }
 
+    /// <summary> 近接攻撃 </summary>
     private void Proximity()
     {
 

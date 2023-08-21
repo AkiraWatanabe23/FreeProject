@@ -5,52 +5,20 @@ using UnityEngine;
 public class AnimationPlayer
 {
     private Animator _anim = default;
-    private string _currentAnimation = "";
+    private string _currentAnimation = "Idle";
 
     public void Init(Animator animator)
     {
         _anim = animator;
+        ChangeAnimation("Idle");
     }
 
-    public void ChangeAnimToIdle()
+    public void ChangeAnimation(string nextAnimation)
     {
-        if (_currentAnimation == "Idle") { return; }
+        if (_currentAnimation == nextAnimation) { return; }
 
-        _currentAnimation = "Idle";
-    }
-
-    public void ChangeAnimToMove()
-    {
-        if (_currentAnimation == "Move") { return; }
-
-        _currentAnimation = "Move";
-    }
-
-    public void ChangeAnimToAttackLongDistance()
-    {
-        if (_currentAnimation == "LongDistance") { return; }
-
-        _currentAnimation = "LongDistance";
-    }
-
-    public void ChangeAnimToAttackProximity()
-    {
-        if (_currentAnimation == "Proximity") { return; }
-
-        _currentAnimation = "Proximity";
-    }
-
-    public void ChangeAnimToDamage()
-    {
-        if (_currentAnimation == "Damage") { return; }
-
-        _currentAnimation = "Damage";
-    }
-
-    public void ChangeAnimToDeath()
-    {
-        if (_currentAnimation == "Death") { return; }
-
-        _currentAnimation = "Death";
+        _anim.SetBool(_currentAnimation, false);
+        _currentAnimation = nextAnimation;
+        _anim.SetBool(_currentAnimation, true);
     }
 }

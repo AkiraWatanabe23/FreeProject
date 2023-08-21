@@ -19,11 +19,11 @@ public class EnemyHealth : IDamage
     public void ReceiceDamage(int value)
     {
         _hp -= value;
-        _animation.ChangeAnimToDamage();
+        _animation.ChangeAnimation("Damage");
 
         if (_hp <= 0)
         {
-            _animation.ChangeAnimToDeath();
+            _animation.ChangeAnimation("Death");
             _enemy.SetActive(false);
         }
     }

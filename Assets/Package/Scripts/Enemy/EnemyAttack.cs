@@ -51,7 +51,7 @@ public class EnemyAttack
         var lookDirection = _player.transform.position - _transform.position;
         _transform.rotation = Quaternion.LookRotation(lookDirection);
 
-        _animation.ChangeAnimToAttackLongDistance();
+        _animation.ChangeAnimation("LongDistance");
 
         var bullet = Object.Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
         var rb =  bullet.AddComponent<Rigidbody>();
@@ -67,7 +67,7 @@ public class EnemyAttack
         _transform.DOMove(movePosition, _moveSecond);
 
         //ここで攻撃Animation
-        _animation.ChangeAnimToAttackProximity();
+        _animation.ChangeAnimation("Proximity");
     }
 
     public void AttackSwitch()

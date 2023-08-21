@@ -19,11 +19,11 @@ public class PlayerHealth : IDamage
     public void ReceiceDamage(int value)
     {
         _hp -= value;
-        _animation.ChangeAnimToDamage();
+        _animation.ChangeAnimation("Damage");
 
         if (_hp <= 0f)
         {
-            _animation.ChangeAnimToDeath();
+            _animation.ChangeAnimation("Death");
             _player.SetActive(false);
         }
     }

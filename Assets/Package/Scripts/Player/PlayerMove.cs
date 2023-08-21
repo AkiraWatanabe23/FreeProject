@@ -33,11 +33,11 @@ public class PlayerMove
             input.y = _rb.velocity.y;
             _rb.velocity = input * _moveSpeed;
 
-            _animation.ChangeAnimToMove();
+            _animation.ChangeAnimation("Move");
         }
         else
         {
-            _animation.ChangeAnimToIdle();
+            _animation.ChangeAnimation("Idle");
         }
     }
 }

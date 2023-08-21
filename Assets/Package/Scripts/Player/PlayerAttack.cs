@@ -44,7 +44,7 @@ public class PlayerAttack
     /// <summary> 遠距離攻撃 </summary>
     private void LongDistance()
     {
-        _animation.ChangeAnimToAttackLongDistance();
+        _animation.ChangeAnimation("LongDistance");
 
         Debug.Log("遠距離攻撃");
         var bullet = Object.Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
@@ -58,6 +58,6 @@ public class PlayerAttack
     private void Proximity()
     {
         //ダメージ処理は武器のクラスに一任
-        _animation.ChangeAnimToAttackProximity();
+        _animation.ChangeAnimation("Proximity");
     }
 }

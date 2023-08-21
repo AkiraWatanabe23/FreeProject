@@ -376,9 +376,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movement:
     _moveSpeed: 5
-    _rotateSpeed: 3
   _attack:
     _attackValue: 1
+    _bulletPrefab: {fileID: 7826290685634104780, guid: 980ae2fff2d5eb548adb2b59a62f4145,
+      type: 3}
     _muzzle: {fileID: 692285166150300899}
   _health:
     _hp: 1

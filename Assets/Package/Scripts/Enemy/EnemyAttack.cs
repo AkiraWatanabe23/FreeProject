@@ -1,16 +1,20 @@
 ﻿using DG.Tweening;
-using System;
 using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class EnemyAttack
 {
     [SerializeField]
     private EnemyType _enemyType = EnemyType.LongDistance;
     [SerializeField]
+    private int _attackValue = 1;
+    [SerializeField]
     private Transform _muzzle = default;
     [SerializeField]
-    private int _attackValue = 1;
+    private GameObject _bulletPrefab = default;
+    [Tooltip("弾速")]
+    [SerializeField]
+    private float _bulletSpeed = 1f;
     [Tooltip("何秒かけて特定の位置に移動するか")]
     [SerializeField]
     private float _moveSecond = 1f;
@@ -48,18 +52,12 @@ public class EnemyAttack
         _transform.rotation = Quaternion.LookRotation(lookDirection);
 
         _animation.ChangeAnimToAttackLongDistance();
-        if (Physics.Raycast(_muzzle.position, _transform.forward, out RaycastHit hit, 10f))
-        {
-            if (hit.collider.gameObject.TryGetComponent(out PlayerController player))
-            {
-                player.Health.ReceiceDamage(_attackValue);
-                AttackSwitch();
-            }
-        }
-        else
-        {
-            Debug.Log("当たらなかった");
-        }
+
+        var bullet = Object.Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
+        var rb =  bullet.AddComponent<Rigidbody>();
+
+        rb.useGravity = false;
+        rb.velocity = bullet.transform.forward * _bulletSpeed;
     }
 
     private void Proximity()

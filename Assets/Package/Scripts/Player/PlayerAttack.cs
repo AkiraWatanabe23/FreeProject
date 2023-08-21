@@ -1,22 +1,24 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-[Serializable]
+[System.Serializable]
 public class PlayerAttack
 {
     [SerializeField]
     private int _attackValue = 1;
     [SerializeField]
     private Transform _muzzle = default;
+    [SerializeField]
+    private GameObject _bulletPrefab = default;
+    [Tooltip("弾速")]
+    [SerializeField]
+    private float _bulletSpeed = 1f;
 
-    private Transform _transform = default;
     private AnimationPlayer _animation = default;
 
     public int AttackValue => _attackValue;
 
-    public void Init(Transform transform, AnimationPlayer animation)
+    public void Init(AnimationPlayer animation)
     {
-        _transform = transform;
         _animation = animation;
     }
 
@@ -42,16 +44,14 @@ public class PlayerAttack
     /// <summary> 遠距離攻撃 </summary>
     private void LongDistance()
     {
-        //エフェクト出すとかはここに書く
         _animation.ChangeAnimToAttackLongDistance();
 
-        if (Physics.Raycast(_muzzle.position, _transform.forward, out RaycastHit hit, 10f))
-        {
-            if (hit.collider.gameObject.TryGetComponent(out EnemyController enemy))
-            {
-                enemy.Health.ReceiceDamage(_attackValue);
-            }
-        }
+        Debug.Log("遠距離攻撃");
+        var bullet = Object.Instantiate(_bulletPrefab, _muzzle.position, _muzzle.rotation);
+        var rb = bullet.AddComponent<Rigidbody>();
+
+        rb.useGravity = false;
+        rb.velocity = bullet.transform.forward * _bulletSpeed;
     }
 
     /// <summary> 近接攻撃 </summary>

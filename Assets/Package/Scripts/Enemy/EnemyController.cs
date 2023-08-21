@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyController : MonoBehaviour
 {
@@ -15,13 +16,9 @@ public class EnemyController : MonoBehaviour
     public EnemyAttack Attack => _attack;
     public EnemyHealth Health => _health;
 
-    public void Init(GameObject player)
-    {
-        _player = player;
-    }
-
     private void Start()
     {
+        _player = GameObject.Find("Player");
         TryGetComponent(out _anim);
 
         _attack.Init(_player, transform, _animation);

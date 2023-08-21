@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         TryGetComponent(out _anim);
 
         _movement.Init(_rb, _animation);
-        _attack.Init(transform, _animation);
+        _attack.Init(_animation);
         _health.Init(gameObject, _animation);
         _animation.Init(_anim);
     }

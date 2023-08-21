@@ -10,11 +10,11 @@ public class PlayerAttack
     private Transform _muzzle = default;
 
     private Transform _transform = default;
-    private PlayerAnimation _animation = default;
+    private AnimationPlayer _animation = default;
 
     public int AttackValue => _attackValue;
 
-    public void Init(Transform transform, PlayerAnimation animation)
+    public void Init(Transform transform, AnimationPlayer animation)
     {
         _transform = transform;
         _animation = animation;

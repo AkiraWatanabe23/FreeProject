@@ -6,13 +6,11 @@ public class PlayerMove
 {
     [SerializeField]
     private float _moveSpeed = 1f;
-    [SerializeField]
-    private float _rotateSpeed = 1f;
 
     private Rigidbody _rb = default;
-    private PlayerAnimation _animation = default;
+    private AnimationPlayer _animation = default;
 
-    public void Init(Rigidbody rigidbody, PlayerAnimation animation)
+    public void Init(Rigidbody rigidbody, AnimationPlayer animation)
     {
         _rb = rigidbody;
         _animation = animation;

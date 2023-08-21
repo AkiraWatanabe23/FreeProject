@@ -10,15 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerHealth _health = new();
     [SerializeField]
-    private PlayerAnimation _animation = new();
+    private AnimationPlayer _animation = new();
 
     private Rigidbody _rb = default;
     private Animator _anim = default;
 
-    public PlayerMove Movement => _movement;
     public PlayerAttack Attack => _attack;
     public PlayerHealth Health => _health;
-    public Rigidbody Rigidbody => _rb;
 
     private void Start()
     {

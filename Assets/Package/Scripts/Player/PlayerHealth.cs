@@ -8,9 +8,9 @@ public class PlayerHealth : IDamage
     private int _hp = 1;
 
     private GameObject _player = default;
-    private PlayerAnimation _animation = default;
+    private AnimationPlayer _animation = default;
 
-    public void Init(GameObject player, PlayerAnimation animation)
+    public void Init(GameObject player, AnimationPlayer animation)
     {
         _player = player;
         _animation = animation;

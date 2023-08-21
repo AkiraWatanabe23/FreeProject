@@ -1,0 +1,40 @@
+﻿<< 説明 >>
+
+・Player
+　1,移動 ... WASD
+　　設定値
+　　・移動速度：MoveSpeed
+
+　2,攻撃
+　　・近接：　右クリック
+　　・遠距離：左
+　　設定値
+　　・攻撃力：AttackValue
+　　・遠距離攻撃のmuzzle：Muzzle
+　　・弾：BulletPrefab
+　　・弾速：BulletSpeed
+
+　3,体力
+　　設定値
+　　・体力：Hp
+
+・Enemy
+　1,攻撃
+　　PlayerがAttackRangeのCollider内に入ってきたら攻撃の行動を行う
+　　・近接：Playerの位置まで近づいて、攻撃
+　　・遠距離：その場でPlayerの方向を向き、弾を撃つ
+
+　　設定値
+　　・攻撃タイプ：EnemyType（近接か遠距離か）
+　　・攻撃力：AttackValue
+　　・遠距離攻撃のmuzzle：Muzzle
+　　・弾：BulletPrefab
+　　・弾速：BulletSpeed
+　　・（近接タイプの場合、何秒かけて指定位置まで移動するか）：MoveSecond
+
+　2,体力
+　　設定値
+　　・体力：Hp
+
+　3,その他
+　　EnemyのCollider範囲：子オブジェクト「AttackRange」のColliderのRadius設定
